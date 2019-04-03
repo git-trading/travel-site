@@ -374,7 +374,7 @@ img {
   }
 
 .large-hero__title {
-    font-weight: 300; /* not bold */
+    font-weight: 400; /* not bold */
     color: #2f5572;
     font-size: 4.8rem;
     margin: 0;
