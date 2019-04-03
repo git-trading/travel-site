@@ -4,7 +4,7 @@ autoprefixer = require('autoprefixer'),
 cssvars = require('postcss-simple-vars'),
 nested = require('postcss-nested'),
 cssImport = require('postcss-import'),
-browserSync = require('browser-sync').create();\
+browserSync = require('browser-sync').create();
 
 function styles() {
   return gulp.src('./app/assets/styles/styles.css')
