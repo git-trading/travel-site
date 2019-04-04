@@ -1,0 +1,49 @@
+.row {
+  /* background-color: yellow; */
+  /* max-width: 976px; */
+  
+  @mixin clearfix;
+
+  &--gutters > div {
+    /* magkakaroon ng new line kapag nagdagdag ng padding kasi sobra na sa 100% ng page width */
+    padding-right: 65px;
+    /* box-sizing para sa hindi mag-new line*/
+    box-sizing: border-box;
+  }
+
+  &--gutters {
+    margin-right: -65px;
+  }
+  
+  &__b-margin-until-medium {
+    margin-bottom: 1rem;
+  }
+
+  /* kapag > 800px magiging 2 columns na */
+  @mixin atMedium {
+
+    &__b-margin-until-medium {
+      margin-bottom: 0;
+    }
+    
+    &__medium-4 {
+      float: left;
+      width: 33.33%;
+    }
+
+    &__medium-4--larger {
+      width: 37%;
+    }
+
+    &__medium-8 {
+      float: left;
+      width: 66.66%;
+    }
+
+    &__medium-8--smaller {
+      width: 63%;
+    }
+
+  }
+
+}
