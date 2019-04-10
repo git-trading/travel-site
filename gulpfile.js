@@ -38,3 +38,18 @@ function watch() {
 }
 
 exports.default = gulp.series(html, watch);
+
+/*
+how to deal with -bash: gulp: command not found
+
+1. npm uninstall -g gulp gulp-cli
+2. delete local node_modules folder
+3. npm install -g gulp gulp-cli
+4. npm install
+5. source ~/.profile
+6. cd to/your/working/directory
+7. gulp
+
+got to point gulp the source everytime you use a new terminal window
+future projects can start at step 3
+*/

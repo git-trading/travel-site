@@ -1,5 +1,8 @@
 {
   "name": "travel-site",
+  "scripts": {
+    "gulp": "gulp"
+  },
   "version": "1.0.0",
   "dependencies": {
     "jquery": "^3.3.1",
