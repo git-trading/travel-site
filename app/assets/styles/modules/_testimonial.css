@@ -20,6 +20,10 @@
     @mixin atMedium {
       margin-bottom: 1.5rem;
     }
+
+    @mixin atLarge {
+      margin-bottom: 0;
+    }
   }
 
   &__photo {
