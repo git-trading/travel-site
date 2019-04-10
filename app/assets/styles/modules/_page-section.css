@@ -2,7 +2,7 @@
   /* at small (530px) walang nang horizontal padding */
   padding: 1.2rem 0rem;
 
-  /* at under medium (800px) to large (1010px) screens may padding pa */
+  /* at medium (800px) to large (1010px) screens may padding pa */
   @mixin atMedium {
     padding: 4.5rem 1.5rem;
   }

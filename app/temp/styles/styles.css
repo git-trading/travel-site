@@ -528,7 +528,7 @@ a {
 
 }
 
-/* at under medium (800px) to large (1010px) screens may padding pa */
+/* at medium (800px) to large (1010px) screens may padding pa */
 
 @media (min-width: 800px) {
 
@@ -794,6 +794,8 @@ a {
   text-align: center;
   margin-bottom: 3em;
 }
+
+/* at small (530px) and larger screens use this */
 
 @media (min-width: 530px) {
 
