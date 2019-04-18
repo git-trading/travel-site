@@ -1,0 +1,24 @@
+.site-header {
+  /* takes the site-header out of the normal flow of the page */
+  position: absolute;
+  /* makes the site-header occupy the whole width */
+  width: 100%;
+  /* equivalent to "bring to front" */
+  z-index: 2;
+  /* not a valid rgba syntax, this used postcss-hexrgba */
+  background-color: rgba($mainBlue, 0.3);
+  padding: 0.625rem 0;
+
+  &__btn-container {
+    float: right;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    background-color: $mainBlue;
+    padding: 1.5625rem 2.25rem;
+  }
+
+  /* bawal lagyan ng semicolon ang dulo ng containing rule */
+}

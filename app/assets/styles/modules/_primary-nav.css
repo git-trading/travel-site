@@ -1,0 +1,31 @@
+.primary-nav {
+
+  &--pull-right {
+    float: right;
+  }
+
+  /* apply to all children element of primary-nav with these tags */
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    /* remove the bullet style */
+    list-style: none;
+    /* push everything to the left */
+    float: left;
+    padding-right: 1.25rem;
+  }
+
+  a {
+    color: #FFF;
+    font-weight: 300;
+    text-decoration: none;
+    /* without display block, padding won't work */
+    display: block;
+    /* ginaya lang padding ng button element */
+    padding: 0.75rem 0;
+  }
+
+}
