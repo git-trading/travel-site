@@ -447,6 +447,10 @@ a {
     background-color: #d59541
   }
 
+.btn--padded-horizontal {
+    padding: 0.75rem 2rem;
+  }
+
 .btn--large {
     padding: 1.1rem 1.9rem;
   }
@@ -1031,4 +1035,27 @@ a {
     width: 34.75px;
     height: 42px;
     background-position: 36.69752421959096% 45.792307692307695%;
+  }
+
+.site-footer {
+  background-color: #2f5572;
+  color: #FFF;
+  padding: 0.5rem 0;
+  text-align: center;
+
+}
+
+.site-footer__text {
+    font-weight: 200;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+@media (min-width: 800px) {
+
+.site-footer__text {
+      display: inline-block;
+      margin-right: 1.4rem;
+      margin-bottom: 0
+  }
   }
