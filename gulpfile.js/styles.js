@@ -10,7 +10,8 @@ mixins = require('postcss-mixins');
 
 function styles() {
   return gulp.src('./app/assets/styles/styles.css')
-    .pipe(postcss([cssImport, mixins, cssvars, nested, autoprefixer])) // order of plugins is important
+    // order of plugins in postcss is important
+    .pipe(postcss([cssImport, mixins, cssvars, nested, autoprefixer])) 
     .pipe(gulp.dest('./app/temp/styles/'))
 }
 
