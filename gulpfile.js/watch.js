@@ -1,7 +1,8 @@
 const gulp = require('gulp'),
 browserSync = require('browser-sync').create();
 
-var styles = require('./styles').styles;
+var styles = require('./styles').styles,
+scripts = require('./scripts').scripts;
 
 function html(cb) {
   console.log('reloading...');
@@ -15,6 +16,12 @@ function cssInject() {
     .pipe(browserSync.stream());
 };
 
+function scriptsRefresh(cb) {
+  console.log('detected js file change, refreshing...')
+  browserSync.reload();
+  cb(); // browserSync.reload() should always have a callback or it gets stuck
+}
+
 function watch() {
   browserSync.init({
     notify: false,
@@ -24,6 +31,7 @@ function watch() {
   }); 
   gulp.watch('./app/index.html', html); // matik nang triggered ito kapag nag-gulp
   gulp.watch('./app/assets/styles/**/*.css', gulp.series(styles, cssInject));
+  gulp.watch('./app/assets/scripts/**/*.js', gulp.series(scripts, scriptsRefresh));
 };
 
 exports.watch = gulp.series(html, watch);

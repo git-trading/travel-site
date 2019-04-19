@@ -380,22 +380,30 @@ a {
 
 .large-hero__text-content {
     position: absolute;
+    padding-top: 3.75rem;
     top: 50%; /* top and transform centers text block on the image*/
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
     left: 0;
     width: 100%;
     text-align: center;
+
+  }
+
+@media (min-width: 800px) {
+
+.large-hero__text-content {
+      padding-top: 5.5rem
+
+  }
   }
 
 .large-hero__title {
+    font-size: 3.4rem; /* mobile-first small font-size */
     font-weight: 400; /* not bold */
     color: #2f5572;
     margin: 0;
-    font-size: 2.4rem;
   }
-
-/* mobile-first small font-size */
 
 @media (min-width: 530px) {
 
@@ -1067,26 +1075,183 @@ a {
   width: 100%;
   /* equivalent to "bring to front" */
   z-index: 2;
-  /* not a valid rgba syntax, this used postcss-hexrgba */
-  background-color: rgba(47,85,114, 0.3);
   padding: 0.625rem 0;
+  transition: background-color 0.3s ease-out;
 
-  /* bawal lagyan ng semicolon ang dulo ng containing rule */
+
 }
 
+.site-header--is-expanded {
+    background-color: rgba(47,85,114, .55);
+  }
+
+@media (min-width: 800px) {
+
+.site-header {
+    /* not a valid rgba syntax, this used postcss-hexrgba */
+    background-color: rgba(47,85,114, 0.3)
+
+
+}
+  }
+
+@media (min-width: 800px) {
+
 .site-header__btn-container {
-    float: right;
+      float: right
+
+  }
   }
 
 .site-header__logo {
+    /* for small screens */
     position: absolute;
     top: 0;
+    left: 50%; /* first, translates the logo to 50% of the vw */
+    -webkit-transform: translateX(-50%) scale(0.8);
+            transform: translateX(-50%) scale(0.8); /* then anchors the center of the logo */
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
     background-color: #2f5572;
     padding: 1.5625rem 2.25rem;
   }
 
+@media (min-width: 800px) {
+
+.site-header__logo {
+      /* medium and larger screens will have the logo positioned to the left */
+      left: auto;
+      -webkit-transform: translateX(0);
+              transform: translateX(0)
+  }
+  }
+
+.site-header__logo__graphic {
+    text-indent: -9999px;
+  }
+
+.site-header__menu-icon {
+    /* press to pop out the nav menu */
+    width: 20px;
+    height: 19px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    
+  }
+
+/* this ensures it always stays on top of everything else when visible */
+
+.site-header__menu-icon::before {
+      /* before is referring to the site-header__menu-icon-middle */
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: #fff;
+      -webkit-transform-origin: 0 0;
+              transform-origin: 0 0; /* fixes pivot to top left */
+      transition: all 0.3s ease-out;
+    }
+
+.site-header__menu-icon__middle {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: #fff;
+      -webkit-transform-origin: 0 50%;
+              transform-origin: 0 50%;
+      transition: all 0.3s ease-out;
+    }
+
+.site-header__menu-icon::after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: #fff;
+      -webkit-transform-origin: 0 100%;
+              transform-origin: 0 100%; /* fixes pivot point to bottom right*/
+      transition: all 0.3s ease-out;
+    }
+
+.site-header__menu-icon--close-x::before {
+        -webkit-transform: rotate(45deg) scaleX(1.25);
+                transform: rotate(45deg) scaleX(1.25);
+      }
+
+/* didn't expect na pwedeng i-brute force select ang higher level classes */
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle {
+        opacity: 0;
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+      }
+
+.site-header__menu-icon--close-x::after {
+        -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+                transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+      }
+
+@media (min-width: 800px) {
+
+.site-header__menu-icon {
+      display: none /* hides the icon at medium and larger screen */
+    
+  }
+  }
+
+.site-header__menu-content {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    padding-top: 5.625rem;
+    text-align: center;
+    transition: all 0.3s ease-out;
+    position: relative; /* z-index won't work without position relative */
+    z-index: -10;
+
+  }
+
+/* prevents accidental clicks/touches */
+
+@media (min-width: 800px) {
+
+.site-header__menu-content {
+      /* medium and larger screens don't need to hide the nav menu */
+      opacity: 1;
+      z-index: 1;
+      padding-top: 0;
+      -webkit-transform: scale(1);
+              transform: scale(1)
+
+  }
+  }
+
+/* brings menu-content all the way at the back when not visible */
+
+.site-header__menu-content--is-visible {
+      /* brings the menu up front when visible. */
+      z-index: 1;
+      opacity: 1;
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+
+/* bawal lagyan ng semicolon ang dulo ng containing rule */
+
+@media (min-width: 800px) {
+
 .primary-nav--pull-right {
-    float: right;
+      float: right
+  }
   }
 
 /* apply to all children element of primary-nav with these tags */
@@ -1097,11 +1262,37 @@ a {
   }
 
 .primary-nav li {
+    display: inline-block;
     /* remove the bullet style */
     list-style: none;
     /* push everything to the left */
-    float: left;
     padding-right: 1.25rem;
+    padding-top: 10px;
+
+  }
+
+/* for smaller screens, puts gap between get in touch button and nav links */
+
+@media (min-width: 800px) {
+
+.primary-nav li {
+      padding-top: 0;
+      display: block;
+      float: left
+
+  }
+  }
+
+.primary-nav li li:last-child {
+      /* removes padding right of the last link for smaller screens */
+      padding-right: 0;
+    }
+
+@media (min-width: 800px) {
+
+.primary-nav li li:last-child {
+        padding-right: 1.25rem
+    }
   }
 
 .primary-nav a {
@@ -1111,5 +1302,17 @@ a {
     /* without display block, padding won't work */
     display: block;
     /* ginaya lang padding ng button element */
-    padding: 0.75rem 0;
+    padding: 0.5rem 1rem;
+    background-color: rgba(47,85,114, 0.3);
+
+  }
+
+@media (min-width: 800px) {
+
+.primary-nav a {
+      font-size: 1rem;
+      padding: 0.75rem 0;
+      background-color: transparent
+
+  }
   }

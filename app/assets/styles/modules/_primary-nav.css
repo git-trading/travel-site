@@ -1,7 +1,9 @@
 .primary-nav {
 
   &--pull-right {
-    float: right;
+    @mixin atMedium {
+      float: right;
+    }
   }
 
   /* apply to all children element of primary-nav with these tags */
@@ -11,11 +13,27 @@
   }
 
   li {
+    display: inline-block;
     /* remove the bullet style */
     list-style: none;
     /* push everything to the left */
-    float: left;
     padding-right: 1.25rem;
+    padding-top: 10px; /* for smaller screens, puts gap between get in touch button and nav links */
+    
+    @mixin atMedium {
+      padding-top: 0;
+      display: block;
+      float: left;
+    }
+
+    li:last-child {
+      /* removes padding right of the last link for smaller screens */
+      padding-right: 0;
+      @mixin atMedium {
+        padding-right: 1.25rem;
+      }
+    }
+
   }
 
   a {
@@ -25,7 +43,15 @@
     /* without display block, padding won't work */
     display: block;
     /* ginaya lang padding ng button element */
-    padding: 0.75rem 0;
+    padding: 0.5rem 1rem;
+    background-color: rgba($mainBlue, 0.3);
+    
+    @mixin atMedium {
+      font-size: 1rem;
+      padding: 0.75rem 0;
+      background-color: transparent;
+    }
+
   }
 
 }
