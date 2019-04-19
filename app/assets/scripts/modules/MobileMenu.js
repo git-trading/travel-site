@@ -5,6 +5,7 @@ class MobileMenu {
     this.siteHeader = $(".site-header");
     this.menuIcon = $(".site-header__menu-icon");
     this.menuContent = $(".site-header__menu-content");
+    // triggered method upon page load if called inside the constructor()
     this.events();
   }
 
