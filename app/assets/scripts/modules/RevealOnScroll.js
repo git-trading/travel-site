@@ -22,7 +22,7 @@ class RevealOnScroll {
       // currentItem momentarily assigns the value of this to a variable
       // so waypoints can trigger the handler for every single itemsToReveal
       var currentItem = this;
-      console.log(`that.offsetPercentage: ${that.offsetPercentage}, this: ${this}`)
+      // console.log(`that.offsetPercentage: ${that.offsetPercentage}, this: ${this}`)
       new Waypoint({
         element: currentItem, // dom element to watch
         handler: function() { // what happens when it gets there

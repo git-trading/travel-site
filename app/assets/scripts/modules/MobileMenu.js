@@ -12,7 +12,7 @@ class MobileMenu {
   events() {
     // kailangan ang .bind(this) para ma-retain ang context ng kiniclick
     this.menuIcon.click(this.toggleTheMenu.bind(this));
-    console.log(this);
+    // console.log(this); // a javascript object, logs as soon as the page loads
   }
   
   toggleTheMenu() {

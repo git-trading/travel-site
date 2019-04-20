@@ -50,6 +50,12 @@
       font-size: 1rem;
       padding: 0.75rem 0;
       background-color: transparent;
+      
+      /* for some reason kailangan magkadikit ang &. */
+      &.is-current-link {
+        color: #fabb69;
+      }
+
     }
 
   }

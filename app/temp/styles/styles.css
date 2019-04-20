@@ -804,7 +804,7 @@ a {
   font-size: 2.55rem;
   font-weight: 300;
   text-align: center;
-  margin-bottom: 3em;
+  margin-bottom: 2.2em;
 }
 
 /* at small (530px) and larger screens use this */
@@ -1326,8 +1326,13 @@ a {
       font-size: 1rem;
       padding: 0.75rem 0;
       background-color: transparent
+      
+      /* for some reason kailangan magkadikit ang &. */
 
   }
+      .primary-nav a.is-current-link {
+        color: #fabb69;
+      }
   }
 
 .reveal-item {
