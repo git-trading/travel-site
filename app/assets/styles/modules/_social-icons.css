@@ -1,0 +1,33 @@
+.social-icons {
+  text-align: center;
+
+  &__icon {
+    background-color: $mainOrange;
+    /* inline-block can reside with another block on the same line */
+    display: inline-block;
+    margin: 5px;
+    width: 72px;
+    height: 72px;
+    position: relative;
+    border-radius: 4px;
+    
+    @mixin atSmall {
+      margin: 0 5px;
+      width: 72px;
+      height: 72px;
+    }
+
+    /* remember this is enclosed in a span within social-icons__icon class */
+    .icon { 
+      /* without this icon wouldn't exist */
+      display: block;
+      /* margin: 15px; */
+      /* border: solid 2px $mainOrange; */
+      /* border-radius: 4px; */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

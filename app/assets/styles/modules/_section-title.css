@@ -18,8 +18,9 @@
     color: $mainBlue;
   }
 
-  &__b-margin-large {
-    /* margin-bottom: 2em; */
+  &--less-margin {
+    margin-bottom: 1.3rem;
+    margin-top: 0;
   }
 
   &__icon {

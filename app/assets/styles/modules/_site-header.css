@@ -4,6 +4,7 @@
   /* makes the site-header occupy the whole width */
   width: 100%;
   /* equivalent to "bring to front" */
+  /* no matter how high the z-index children elements, they can never get on top of the 2 declared here, see &__menu-icon with the z-index of 10 vs modal with 5  */
   z-index: 2;
   padding: 0.625rem 0;
   transition: background-color 0.3s ease-out;
@@ -55,6 +56,8 @@
   }
 
   &__logo__graphic {
+    /* text is still technically there but no longer visible, 
+    needs text for SEO */
     text-indent: -9999px;
   }
 
