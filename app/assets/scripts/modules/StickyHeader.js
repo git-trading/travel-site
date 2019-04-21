@@ -4,6 +4,7 @@ import smoothScroll from 'jquery-smooth-scroll';
 
 class StickyHeader {
   constructor() {
+    this.lazyImages = $('.lazyload');
     this.siteHeader = $('.site-header');
     this.pageSections = $('.page-section');
     this.headerLinks = $('.primary-nav a'); // all link elements in primary-nav
@@ -11,6 +12,14 @@ class StickyHeader {
     this.createHeaderWaypoint();
     this.createPageSectionWaypoints();
     this.addSmoothScrolling();
+    this.refreshWaypoints();
+  }
+
+  refreshWaypoints() { // solves the conflict with lazyload
+    // as soon as loaded, trigger function
+    this.lazyImages.on('load', function() {
+      Waypoint.refreshAll();
+    });
   }
 
   addSmoothScrolling() {
