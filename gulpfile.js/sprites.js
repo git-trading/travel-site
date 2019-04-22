@@ -1,11 +1,26 @@
 const gulp = require('gulp'),
 svgSprite = require('gulp-svg-sprite'),
 rename = require('gulp-rename'),
-del = require('del');
+del = require('del'),
+svg2png = require('gulp-svg2png');
  
 var config = {
+  shape: {
+    spacing: {
+      padding: 1
+    }
+  },
   mode: {
     css: {
+      // i don't understand this yet, this is used by sprite-template.css
+      // to deal with .no-svg class for ancient browsers
+      variables : {
+        replaceSvgWithPng: function() {
+          return function(sprite, render) {
+            return render(sprite).split('.svg').join('.png'); //replacing the extension
+          }
+        }
+      },
       sprite: 'sprite.svg',
       render: {
         css: {
@@ -30,12 +45,18 @@ function createSprite() {
     .pipe(svgSprite(config))
     .pipe(gulp.dest('./app/temp/sprite/'));
 };
-// exports.createSprite = createSprite; // no need to export this
+// exports.createSprite = createSprite; // private task, no need to export this
+
+function createPngCopy() {
+  return gulp.src('./app/temp/sprite/css/*.svg')
+  .pipe(svg2png())
+  .pipe(gulp.dest('./app/temp/sprite/css'));
+}
 
 // copying the created sprite.css
 // from createSprite task to app/assets/images/sprites
 function copySpriteGraphic() {
-  return gulp.src('./app/temp/sprite/css/**/*.svg')
+  return gulp.src('./app/temp/sprite/css/**/*.{svg,png}')
   .pipe(gulp.dest('./app/assets/images/sprites/'));
 };
 
@@ -58,8 +79,9 @@ function endClean() {
 
 exports.icons = gulp.series(
   beginClean,
-  createSprite, 
-  copySpriteGraphic, 
+  createSprite,
+  createPngCopy,
+  copySpriteGraphic,
   copySpriteCSS,
   endClean
 );

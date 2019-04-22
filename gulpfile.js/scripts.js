@@ -16,4 +16,4 @@ function scripts(cb) {
   );
 }
 
-exports.scripts = gulp.series(scripts);
+exports.scripts = scripts;
