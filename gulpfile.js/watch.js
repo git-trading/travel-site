@@ -2,7 +2,8 @@ const gulp = require('gulp'),
 browserSync = require('browser-sync').create();
 
 var styles = require('./styles').styles,
-scripts = require('./scripts').scripts;
+scripts = require('./scripts').scripts,
+modernizr = require('./modernizr').modernizr;
 
 function html(cb) {
   console.log('reloading...');
@@ -29,9 +30,12 @@ function watch() {
       baseDir: './app' // points to where index.html lives
     }
   }); 
-  gulp.watch('./app/index.html', html); // matik nang triggered ito kapag nag-gulp
+  gulp.watch('./app/index.html', html);
   gulp.watch('./app/assets/styles/**/*.css', gulp.series(styles, cssInject));
-  gulp.watch('./app/assets/scripts/**/*.js', gulp.series(scripts, scriptsRefresh));
+  gulp.watch(
+    './app/assets/scripts/**/*.js',
+    gulp.series(modernizr, scripts, scriptsRefresh)
+  );
 };
 
-exports.watch = gulp.series(html, watch);
+exports.watch = watch;

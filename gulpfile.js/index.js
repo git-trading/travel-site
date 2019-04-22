@@ -1,5 +1,5 @@
-var watch = require('./watch.js').watch;
-exports.watch = watch;
+var watch = require('./watch').watch;
 
-exports.icons = require('./sprites.js').icons;
-exports.styles = require('./styles.js').styles;
+exports.watch = watch;
+exports.icons = require('./sprites').icons;
+exports.styles = require('./styles').styles;
