@@ -72,8 +72,9 @@ function useMin() {
 
 exports.build = gulp.series(
   icons,
+  deleteDistFolder,
   gulp.parallel(
-    gulp.series(deleteDistFolder, copyGeneralFiles),
+    copyGeneralFiles,
     gulp.series(optimizeImages, styles, scripts)
   ),
   useMin
