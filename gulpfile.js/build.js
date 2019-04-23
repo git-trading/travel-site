@@ -15,7 +15,7 @@ function previewDist() {
   browserSync.init({
     notify: false,
     server: {
-      baseDir: './dist' // points to where index.html from the production build lives
+      baseDir: './docs' // points to where index.html from the production build lives
     }
   }); 
 };
@@ -23,12 +23,12 @@ function previewDist() {
 exports.previewDist = previewDist;
 
 function deleteDistFolder() {
-  return del('./dist');
+  return del('./docs');
 };
 
 function copyGeneralFiles() {
   return gulp.src('./app/general-files/*')
-    .pipe(gulp.dest('./dist/general-files'));
+    .pipe(gulp.dest('./docs/general-files'));
 };
 
 function optimizeImages() {
@@ -48,7 +48,7 @@ function optimizeImages() {
         ]
       })
     ]))
-    .pipe(gulp.dest('./dist/assets/images'));
+    .pipe(gulp.dest('./docs/assets/images'));
 };
 
 function useMin() {
@@ -57,15 +57,24 @@ function useMin() {
       css: [function() {return rev()}, function() {return cssnano()}],
       js: [function() {return rev()}, function() {return uglify()}]
     }))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./docs'))
 };
 
+// exports.build = gulp.series(
+//   icons,
+//   deleteDistFolder,
+//   copyGeneralFiles,
+//   optimizeImages,
+//   styles,
+//   scripts,
+//   useMin
+// );
+
 exports.build = gulp.series(
-  deleteDistFolder,
-  copyGeneralFiles,
   icons,
-  optimizeImages,
-  styles,
-  scripts,
+  gulp.parallel(
+    gulp.series(deleteDistFolder, copyGeneralFiles),
+    gulp.series(optimizeImages, styles, scripts)
+  ),
   useMin
-);
+)
